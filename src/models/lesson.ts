@@ -16,13 +16,13 @@ export class Lesson {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "varchar" })
+  @Column()
   title: string;
 
-  @Column({ type: "varchar" })
+  @Column()
   duration: string;
 
-  @Column({ type: "int8" })
+  @Column()
   seqNo: number;
 
   @ManyToOne(() => Course, (course) => course.lessons)

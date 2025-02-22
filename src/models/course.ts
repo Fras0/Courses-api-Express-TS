@@ -15,19 +15,19 @@ export class Course {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "int8" })
+  @Column()
   seqNo: number;
 
-  @Column({ type: "varchar" })
+  @Column()
   title: string;
 
-  @Column({ type: "varchar" })
+  @Column()
   iconUrl: string;
 
-  @Column({ type: "varchar" })
+  @Column()
   longDescription: string;
 
-  @Column({ type: "varchar" })
+  @Column()
   category: string;
 
   @OneToMany(() => Lesson, (lesson) => lesson.course)

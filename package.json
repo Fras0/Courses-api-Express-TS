@@ -6,7 +6,11 @@
     "build": "tsc",
     "server": "node dist/server.js",
     "dev-server": "tsc-watch --onSuccess \"node dist/server.js\"",
-    "dev": "npm-run-all clean build dev-server"
+    "dev": "npm-run-all clean build dev-server",
+    "run-populate-db-script": "node dist/src/models/populate-db.js",
+    "populate-db": "npm-run-all clean build run-populate-db-script",
+    "run-delete-db-script": "node dist/src/models/delete-db.js",
+    "delete-db": "npm-run-all clean build run-delete-db-script"
   },
   "author": "",
   "license": "MIT",
@@ -22,6 +26,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.3",
+    "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
     "winston": "^3.17.0"
   }

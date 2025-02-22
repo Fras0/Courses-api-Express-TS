@@ -6,12 +6,13 @@ if (result.error) {
   console.log(`Error loading the environment variables,aborting.`);
   process.exit(1);
 }
+
+import "reflect-metadata";
 import * as express from "express";
 import { root } from "./routes/root";
 import { isInteger } from "./utils";
 import { logger } from "./logger";
 import { AppDataSource } from "./data-source";
-import { log } from "winston";
 
 const app = express();
 
