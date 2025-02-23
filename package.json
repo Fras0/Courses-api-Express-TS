@@ -4,8 +4,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc",
-    "server": "node dist/server.js",
-    "dev-server": "tsc-watch --onSuccess \"node dist/server.js\"",
+    "server": "node dist/src/server.js",
+    "dev-server": "tsc-watch --onSuccess \"node dist/src/server.js\"",
     "dev": "npm-run-all clean build dev-server",
     "run-populate-db-script": "node dist/src/models/populate-db.js",
     "populate-db": "npm-run-all clean build run-populate-db-script",
