@@ -20,6 +20,10 @@ import { findLessonsForCourse } from "./routes/find-lessons-for-course";
 import { updateCourse } from "./routes/update-course";
 import { createCourse } from "./routes/create-course";
 import { deleteCourseAndLessons } from "./routes/delete-course";
+import { createUser } from "./routes/create-user";
+import { login } from "./routes/login";
+import { checkIfAuthenticated } from "./middlewares/authentication-middleware";
+import { checkIfAdmin } from "./middlewares/admin-only-middleware";
 
 const cors = require("cors");
 
@@ -33,12 +37,23 @@ function setupExpress() {
   app.use(bodyParser.json());
 
   app.route("/").get(root);
+  app.route("/api/login").post(login);
+
+  app.use(checkIfAuthenticated);
+
   app.route("/api/courses").get(getAllCourses);
+
   app.route("/api/courses/:courseId").get(findCourseByUrl);
+
   app.route("/api/courses/:courseId/lessons").get(findLessonsForCourse);
+
   app.route("/api/courses/:courseId").patch(updateCourse);
+
   app.route("/api/courses").post(createCourse);
+
   app.route("/api/courses/:courseId").delete(deleteCourseAndLessons);
+
+  app.route("/api/users").post(checkIfAdmin, createUser);
 
   app.use(defaultErrorHandler);
 }
